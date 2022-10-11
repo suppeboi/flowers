@@ -1,8 +1,8 @@
-## Note!!
+## NOTE!!
 Sometimes github struggles to visualize jupyter notebook files. If you try clicking the file guide.ipynb and nothing renders (except possibly an error message), go to [https://nbviewer.jupyter.org/github/epimedai/flowers/blob/master/guide.ipynb](https://nbviewer.jupyter.org/github/epimedai/flowers/blob/master/guide.ipynb) to view the file through Jupyters own notebook viewer.
 
 # Flower species classification
-This repo contains the basic building blocks for creating an image classification model for recognizing flowers of various species. It exists as an extension of [this](https://ikt.tekna.no/python-maskinlaeringsworkshop/) machine learning workshop, and subsequent variants, hosted by [Tekna](https://www.tekna.no). The repo consists of three main components:
+This repo contains the basic building blocks for creating an image classification model for recognizing flowers of various species. It exists as an extension of [this](https://www.tekna.no/kurs/introduksjon-til-maskinlaring-44205/) machine learning workshop, and preceeding/subsequent variants, hosted by [Tekna](https://www.tekna.no). The repo consists of three main components:
 
 1. The slides used in the workshop
 2. A fully working guide implemented as a Jupyter Notebook
@@ -11,7 +11,7 @@ This repo contains the basic building blocks for creating an image classificatio
 Additionally there is a version of the guide implemented as six stand-alone python scripts, one per step, for users not familiar with Jupyter Notebooks.
 
 ## Setup
-The goal of this setup is creating an environment where we can run the code listed in the guide. To achieve this goal there are two necessary prerequisites:
+The goal of this setup is creating an environment where we can run the code written in the guide. To achieve this goal there are two necessary prerequisites:
 
 - A working Python 3 environment with Tensorflow and Keras installed
 - A folder containing the dataset structured [as we want it](#preparing-the-dataset)
@@ -31,11 +31,13 @@ macOS: https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
 Linux: https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
 ```
-$ wget <url> 
+$ wget <url>
 $ sh Miniconda3-latest-<OS>-x86_64.sh
 ```
 
-Running the script will trigger a bunch of prompts, one of which is 
+<b>NOTE!! If you get the message ```wget: command not found```you don't have wget installed, and you can instead open and download the script through a browser</b>
+
+Running the script will trigger a bunch of prompts, one of which is
 
 ```
 Do you wish the installer to initialize Miniconda3 by running conda init? [yes|no]
@@ -44,22 +46,27 @@ Do you wish the installer to initialize Miniconda3 by running conda init? [yes|n
 where we recommend you to answer yes. Once the installer finishes the installation of Miniconda, Python and pip are ready for use.
 
 ##### Windows
-The miniconda installer for windows can be downloaded from 
+The miniconda installer for windows can be downloaded from
 https://conda.io/en/latest/miniconda.html
 
-Follow the installation guide until it is completed. Open the "Anaconda Prompt" from your start menu. If you are using linux, you should use the terminal to execute the commands, but if you are using windows you should use the "Anaconda prompt". 
+Follow the installation guide until it is completed. Open the "Anaconda Prompt" from your start menu. If you are using linux, you should use the terminal to execute the commands, but if you are using windows you should use the "Anaconda prompt".
 
 #### Creating the environment
 We can create an environment with our newly installed conda installation using the command ```conda create```. We do, however, have to source the .bashrc (or .bash_profile for Mac users) file modified in the previous step. This is not nessecary for windows:
 
+Linux:
 ```
-$ source .bashrc 
+$ source .bashrc
 ```
-Next, we run the command that creates a new environment. Here we name it "ml" and give it the default python version 3.6.
+macOS:
 ```
-$ conda create --name ml python=3.6
+$ source .bash_profile
 ```
-The new environment has to be activated.
+Next, we run the command that creates a new environment. Here we name it "ml" and use the newest Python version 3.10.
+```
+$ conda create --name ml python=3.10
+```
+Then, the new environment has to be activated.
 ```
 $ conda activate ml
 ```
@@ -70,15 +77,16 @@ If everything went as intended the command line prompt should now be prefixed wi
 ```
 
 #### Installing packages
-The two most important packages needed for this project are Tensorflow and Keras, which can both be installed by pip. Additionally we will install matplotlib and PIL for interacting and showing images.
+<b>Note!!: Users with newer macs with M1 or M2 chips need to follow a more complex installation pipeline for tensorflow seen [here](https://developer.apple.com/metal/tensorflow-plugin/)</b>
+
+
+The most important package needed for this project is Tensorflow, which can be installed through pip. Additionally we will install matplotlib and PIL for interacting and showing images.
 
 ```
 (ml) $ pip install tensorflow
-(ml) $ pip install keras
 (ml) $ pip install matplotlib
 (ml) $ pip install pillow
 ```
-<b>(Note: Users with a GPU could install tensorflow-gpu instead of tensorflow to greatly increase the training efficiency, but this is not necessary for this workshop)</b>
 
 We also recommend installing Jupyter to be able to run the guide as a notebook:
 
@@ -87,16 +95,15 @@ We also recommend installing Jupyter to be able to run the guide as a notebook:
 ```
 
 #### Environment sanity check
-We can check that everything works as it should by importing the packages in Python:
+We can check that everything works as it should by importing tensorflow in Python:
 
 ```
-(ml) $ python -c "import tensorflow" 
-(ml) $ python -c "import keras"
+(ml) $ python -c "import tensorflow;print(tensorflow.__version__)"
 ```
 
-If you are able to run these commands without anything failing horribly (warnings are OK!) you are all set up.
+If this runs without anything failing horribly (warnings are OK!), and you get printed the version 2.10, you are all set up.
 
-Note that whether or not this setup runs smoothly depends heavily on what already exists on your OS. Typical problems relate to image-specific libraries used by tensorflow. If you run into trouble you should get far by googling, or by sending me an email at esten@epimed.ai
+Note that whether or not this setup runs smoothly depends heavily on what already exists on your OS. Typical problems relate to image-specific libraries used by tensorflow. If you run into trouble you should get far by googling, or by sending me an email at estenleonardsen@gmail.com.
 
 
 ### Preparing the dataset
@@ -113,7 +120,7 @@ Clone (download) the Flowers guide from https://github.com/epimedai/flowers/blob
 
 (If you are struggling cloning the repo, try using HTTPS instead of SSH. You can toggle this under the "Clone or download" button at the top of this page)
 
-Before continuing, Windows users must download and install wget, for instance from https://eternallybored.org/misc/wget/ (version 1.20).
+If you are a Windows user wanting to do this through the terminal, you must download and install wget, for instance from https://eternallybored.org/misc/wget/ (version 1.20).
 
 The dataset can now be downloaded and unzipped into this repo's root folder as follows:
 
