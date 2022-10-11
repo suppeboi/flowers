@@ -86,6 +86,7 @@ The most important package needed for this project is Tensorflow, which can be i
 (ml) $ pip install tensorflow
 (ml) $ pip install matplotlib
 (ml) $ pip install pillow
+(ml) $ pip install scipy
 ```
 
 We also recommend installing Jupyter to be able to run the guide as a notebook:
