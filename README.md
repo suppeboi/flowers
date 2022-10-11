@@ -26,6 +26,8 @@ Setting up our environment means installing Python and all the packages we will 
 Conda is a package, dependency and environment manager for several languages, but in this project we will take advantage of the environment management capabilities. We will be using a version called Miniconda, which is installed by downloading and running a bash-script. Note that both the URL and the name of the script depend on your operating system.
 
 ##### macOS and Linux
+<b>Note!!: Users with newer macs with M1 or M2 chips need to follow a more complex installation pipeline for tensorflow seen [here](https://developer.apple.com/metal/tensorflow-plugin/)</b>
+
 macOS: https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
 
 Linux: https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
@@ -35,7 +37,7 @@ $ wget <url>
 $ sh Miniconda3-latest-<OS>-x86_64.sh
 ```
 
-<b>NOTE!! If you get the message ```wget: command not found```you don't have wget installed, and you can instead open and download the script through a browser</b>
+<b>NOTE!! If you get the message ```wget: command not found```you don't have wget installed, and should instead open and download the script through a browser</b>
 
 Running the script will trigger a bunch of prompts, one of which is
 
@@ -49,18 +51,18 @@ where we recommend you to answer yes. Once the installer finishes the installati
 The miniconda installer for windows can be downloaded from
 https://conda.io/en/latest/miniconda.html
 
-Follow the installation guide until it is completed. Open the "Anaconda Prompt" from your start menu. If you are using linux, you should use the terminal to execute the commands, but if you are using windows you should use the "Anaconda prompt".
+Follow the installation guide until it is completed. Open the "Anaconda Prompt" from your start menu. If you are using Linux, you should use the terminal to execute the following commands, on Windows you should use the "Anaconda prompt".
 
 #### Creating the environment
-We can create an environment with our newly installed conda installation using the command ```conda create```. We do, however, have to source the .bashrc (or .bash_profile for Mac users) file modified in the previous step. This is not nessecary for windows:
+We can create an environment with our newly installed conda installation using the command ```conda create```. We do, however, have to source the .bashrc (or .bash_profile for Mac users) file modified in the previous step. This is not nessecary on Windows:
 
 Linux:
 ```
-$ source .bashrc
+$ source ~/.bashrc
 ```
 macOS:
 ```
-$ source .bash_profile
+$ source ~/.bash_profile
 ```
 Next, we run the command that creates a new environment. Here we name it "ml" and use the newest Python version 3.10.
 ```
@@ -77,8 +79,6 @@ If everything went as intended the command line prompt should now be prefixed wi
 ```
 
 #### Installing packages
-<b>Note!!: Users with newer macs with M1 or M2 chips need to follow a more complex installation pipeline for tensorflow seen [here](https://developer.apple.com/metal/tensorflow-plugin/)</b>
-
 
 The most important package needed for this project is Tensorflow, which can be installed through pip. Additionally we will install matplotlib and PIL for interacting and showing images.
 
@@ -116,7 +116,11 @@ The dataset we will be using consists of images of flowers, 17 species with 80 s
 We will be using 65 images per species for training and 15 images per species for validation.
 
 #### Downloading the dataset
-Clone (download) the Flowers guide from https://github.com/epimedai/flowers/blob/master/guide.ipynb to your  machine. If you have installed git, you can ```git clone``` it, otherwise you can visit the GitHub web site, press either Download or Raw, and save the file to a local folder. This folder will now be your repo's root folder.
+Clone (download) the Flowers guide from https://github.com/estenhl/flowers to your machine. If you have installed git, you can ```git clone``` it, otherwise you can visit the GitHub web site, press either Download or Raw, and save the file to a local folder. This folder will now be your repo's root folder.
+
+```
+(ml) $ git clone git@github.com:estenhl/flowers.git
+```
 
 (If you are struggling cloning the repo, try using HTTPS instead of SSH. You can toggle this under the "Clone or download" button at the top of this page)
 
@@ -125,6 +129,7 @@ If you are a Windows user wanting to do this through the terminal, you must down
 The dataset can now be downloaded and unzipped into this repo's root folder as follows:
 
 ```
+(ml) $ cd flowers
 (ml) $ wget http://www.robots.ox.ac.uk/~vgg/data/flowers/17/17flowers.tgz
 (ml) $ tar -xvzf 17flowers.tgz
 ```
