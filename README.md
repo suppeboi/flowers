@@ -107,13 +107,13 @@ Note that whether or not this setup runs smoothly depends heavily on what alread
 
 #### Known issues
 ##### macOS M1/M2
-<b>Problem:</b>Getting some variant of the following error message when importing tensorflow:
+<b>Problem:</b> Getting some variant of the following error message when importing tensorflow
 ```
 RuntimeError: module compiled against API version 0x10 but this version of numpy is 0xf
 ImportError: numpy.core._multiarray_umath failed to import
 ImportError: numpy.core.umath failed to import
 ```
-<b>Solution:</b>Upgrade numpy:
+<b>Solution:</b> Upgrade numpy
 ```
 pip install numpy --upgrade
 ```
