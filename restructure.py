@@ -1,7 +1,13 @@
 import os
 import shutil
+import sys
 
+# Skips if directory already exists
+if os.path.exists('flowers'):
+    print('flowers directory already exists. Exiting')
+    sys.exit()
 
+# Restructuring images
 SOURCE = 'jpg'
 NUM_IMAGES_PER_FLOWER = 80
 NUM_TRAIN_IMAGES = 65
@@ -30,3 +36,4 @@ for i in range(len(FLOWER_NAMES)):
             dest = os.path.join('flowers', 'val', FLOWER_NAMES[i], filename)
 
         shutil.copyfile(src, dest)
+print("Done")
