@@ -105,6 +105,18 @@ If this runs without anything failing horribly (warnings are OK!), and you get p
 
 Note that whether or not this setup runs smoothly depends heavily on what already exists on your OS. Typical problems relate to image-specific libraries used by tensorflow. If you run into trouble you should get far by googling, or by sending me an email at estenleonardsen@gmail.com.
 
+#### Known issues
+##### macOS M1/M2
+<b>Problem:</b>Getting some variant of the following error message when importing tensorflow:
+```
+RuntimeError: module compiled against API version 0x10 but this version of numpy is 0xf
+ImportError: numpy.core._multiarray_umath failed to import
+ImportError: numpy.core.umath failed to import
+```
+<b>Solution:</b>Upgrade numpy:
+```
+pip install numpy --upgrade
+```
 
 ### Preparing the dataset
 The dataset we will be using consists of images of flowers, 17 species with 80 samples each, and was created by the Visual Geometry Group at the University of Oxford. For later convenience we want the dataset structured as follows:
