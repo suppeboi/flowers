@@ -29,10 +29,10 @@ The goal of this setup is to enable you to run the [notebook](guide.ipynb) for t
 
 2. When the notebook has opened (it should open automatically at creation), press "Runtime" in the menu at the top, and "Change runtime type". Select T4 GPU as the Hardware accelerator
 
-![Change runtime](images/new_notebook.png)
+![Change runtime](images/runtime.png)
 
 ### Configure the environment
-In this section we will set up the necessary prerequisites to run the classification notebook
+In this section we will configure the prerequisites needed for the notebook.
 #### Data
 1. Download the dataset from [http://www.robots.ox.ac.uk/~vgg/data/flowers/17/17flowers.tgz](http://www.robots.ox.ac.uk/~vgg/data/flowers/17/17flowers.tgz) to your local computer
 2. Unwrap the tarball with your favourite unzipper (usually happens automatically if you double-click the downloaded file). This will create a folder called 'jpg' somewhere on your system (usually where the 17flowers.tgz-file is located when you double-click it).
@@ -48,7 +48,7 @@ In this section we will set up the necessary prerequisites to run the classifica
 
 ![Create new folder](images/upload.png)
 
-6. Copy the code from the file 'restructure.py' in the github-repo into a Jupyter Notebook cell and run it. The result should be a newly created folder 'flowers' (it can take some time before it pops up, be patient), with subfolders 'train' and 'val, which each again has a subfolder for each flower species containing images
+6. Copy the code from the file 'restructure.py' in the github-repo into a Jupyter Notebook cell and run it. The result should be a newly created folder 'flowers' (it can take some time before it pops up, be patient), with subfolders 'train' and 'val': Going deeper, each of these should have a subfolder for each flower species, where the images reside.
 
 #### Environment
 1. Install tensorflow by creating a new Jupyter Notebook cell and run the code
