@@ -2,7 +2,7 @@
 Sometimes github struggles to visualize jupyter notebook files. If you try clicking the file guide.ipynb and nothing renders (except possibly an error message), go to [https://nbviewer.jupyter.org/github/epimedai/flowers/blob/master/guide.ipynb](https://nbviewer.jupyter.org/github/epimedai/flowers/blob/master/guide.ipynb) to view the file through Jupyters own notebook viewer.
 
 # Flower species classification
-This repo contains the basic building blocks for creating an image classification model for recognizing flowers of various species. It exists as an extension of [this](https://www.tekna.no/kurs/introduksjon-til-maskinlaring-44205/) machine learning workshop, and preceeding/subsequent variants, hosted by [Tekna](https://www.tekna.no). The repo consists of three main components:
+This repo contains the basic building blocks for creating an image classification model for recognizing flowers of various species. It exists as an extension of [this](https://www.tekna.no/kurs/workshop-introduksjon-til-maskinlaring-48133/) machine learning workshop, and preceeding/subsequent variants, hosted by [Tekna](https://www.tekna.no). The repo consists of three main components:
 
 1. The slides used in the workshop
 2. A fully working guide implemented as a Jupyter Notebook
@@ -14,6 +14,8 @@ Additionally there is a version of the guide implemented as six stand-alone pyth
 There are two ways of running the code present in this repo, both explained in this README:
 1. [Via google colab](#google-colab-setup) (Recommended)
 2. [Locally](#local-setup) (Has not been updated for a while)
+
+<b>Note that you only need to follow one of these! If you use Google Colab, you can stop before the Local Setup-part of the guide starts</b>
 
 ### Google Colab setup
 The goal of this setup is to enable you to run the [notebook](guide.ipynb) for training a classifier to differentiate between flower species in a Google Colab environment. Although Colab has support for direct links to github, we will achieve this by copying the code from the notebook (or, alternatively) the entire file, to avoid multiple people modifying the notebook in this repository simultaneously. Thus, the setup consists of these four steps:
@@ -27,7 +29,7 @@ The goal of this setup is to enable you to run the [notebook](guide.ipynb) for t
 
 ![Create a new notebook](images/new_notebook.png)
 
-2. When the notebook has opened (it should open automatically at creation), press "Runtime" in the menu at the top, and "Change runtime type". Select T4 GPU as the Hardware accelerator
+2. When the notebook has opened (it should open automatically at creation), press "Runtime"/"Kjøring" in the menu at the top, and "Change runtime type"/"Endre kjøringstype". Select T4 GPU as the Hardware accelerator/Maskingvareakselerator
 
 ![Change runtime](images/runtime.png)
 
@@ -35,7 +37,7 @@ The goal of this setup is to enable you to run the [notebook](guide.ipynb) for t
 In this section we will configure the prerequisites needed for the notebook.
 #### Data
 1. Download the dataset from [http://www.robots.ox.ac.uk/~vgg/data/flowers/17/17flowers.tgz](http://www.robots.ox.ac.uk/~vgg/data/flowers/17/17flowers.tgz) to your local computer
-2. Unwrap the tarball with your favourite unzipper (usually happens automatically if you double-click the downloaded file). This will create a folder called 'jpg' somewhere on your system (usually where the 17flowers.tgz-file is located when you double-click it).
+2. Unwrap the tarball with your favourite unzipper (usually happens automatically if you double-click the downloaded file). If you are on Windows, achieveing this requires two steps: First decompress tgz to tar, then unzip the resulting tarfile. This will create a folder called 'jpg' somewhere on your system (usually where the 17flowers.tgz-file is located when you double-click it).
 3. In your Jupyter Notebook on Google Colab, click the folder-symbol on the left hand side
 
 ![Click the folder symbol](images/folder_symbol.png)
@@ -44,11 +46,11 @@ In this section we will configure the prerequisites needed for the notebook.
 
 ![Create new folder](images/new_folder.png)
 
-5. Right-click the folder and click upload. Navigate to the 'jpg'-folder you just downloaded locally, open it and select all the images. Click Open to upload them
+5. Right-click the folder and click "Upload"/"Last opp". Navigate to the 'jpg'-folder you just downloaded locally, open it and select all the images. Click Open to upload them
 
 ![Create new folder](images/upload.png)
 
-6. Copy the code from the file 'restructure.py' in the github-repo into a Jupyter Notebook cell and run it. The result should be a newly created folder 'flowers' (it can take some time before it pops up, be patient), with subfolders 'train' and 'val': Going deeper, each of these should have a subfolder for each flower species, where the images reside.
+6. <b>Noe that you should not start this step until all images are uploaded, which might take some time!</b>Copy the code from the file 'restructure.py' in the github-repo into a Jupyter Notebook cell and run it. The result should be a newly created folder 'flowers' (it can take some time before it pops up, be patient. If nothing happens you can also click "Refresh"/"Last inn" again), with subfolders 'train' and 'val': Going deeper, each of these should have a subfolder for each flower species, where the images reside.
 
 #### Environment
 1. Install tensorflow by creating a new Jupyter Notebook cell and run the code
